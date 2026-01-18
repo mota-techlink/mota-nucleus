@@ -1,0 +1,24 @@
+{
+  "name": "@mota/database",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./types": "./src/types.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:types": "supabase gen types typescript --local > src/types.ts",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@mota/config": "workspace:*",
+    "supabase": "^1.145.4", 
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7"
+  }
+}
