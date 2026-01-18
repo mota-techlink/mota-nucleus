@@ -72,6 +72,15 @@ jobs:
       # A. Cloudflare 构建与部署
       # ----------------------------------------------------------------
       - name: Build for Cloudflare Pages
+        env:            
+            # 1. 注入 Schema (预览环境用 pr_xx，其他环境为空/public)
+            NEXT_PUBLIC_DB_SCHEMA: ${{ steps.env-context.outputs.ENV_NAME == 'preview' && format('pr_{0}', github.event.number) || 'public' }}
+          
+            # 2. 动态注入 URL (根据环境判断)
+            NEXT_PUBLIC_SUPABASE_URL: ${{ steps.env-context.outputs.ENV_NAME == 'production' && secrets.NEXT_PUBLIC_SUPABASE_URL_PROD || secrets.NEXT_PUBLIC_SUPABASE_URL_TEST }}
+          
+            # 3. 动态注入 Key (根据环境判断)
+            NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ steps.env-context.outputs.ENV_NAME == 'production' && secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY_PROD || secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY_TEST }} 
         run: |
           cd apps/web
           pnpm dlx @cloudflare/next-on-pages

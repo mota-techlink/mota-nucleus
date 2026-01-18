@@ -15,8 +15,9 @@
   },
   "devDependencies": {
     "@mota/config": "workspace:*",
-    "supabase": "^1.145.4", 
-    "typescript": "^5.3.3"
+    "eslint": "^9",
+    "supabase": "^1.145.4",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.7"

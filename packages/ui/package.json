@@ -5,12 +5,13 @@
   "exports": {
     "./globals.css": "./src/globals.css",
     "./utils": "./src/lib/utils.ts",
-    "./components/button": "./src/components/button.tsx", 
+    "./components/button": "./src/components/button.tsx",
     "./components/*": "./src/components/*"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component"
+    "generate:component": "turbo gen react-component",
+    "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -24,6 +25,7 @@
     "autoprefixer": "^10.4.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "eslint": "^9",
     "lucide-react": "^0.330.0",
     "postcss": "^8.4.35",
     "tailwind-merge": "^2.2.1",
